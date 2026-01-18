@@ -1,136 +1,145 @@
-"use client";
-
-import { useState, useEffect } from 'react';
+import Link from "next/link";
 
 export default function AboutPage() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
   const technologies = [
-    { name: 'JavaScript', color: 'from-yellow-400 to-yellow-600', icon: 'JS' },
-    { name: 'TypeScript', color: 'from-blue-400 to-blue-600', icon: 'TS' },
-    { name: 'React', color: 'from-cyan-400 to-cyan-600', icon: '⚛' },
-    { name: 'Next.js', color: 'from-gray-700 to-black', icon: '▲' },
-    { name: 'Node.js', color: 'from-green-500 to-green-700', icon: 'N' },
-    { name: 'Solidity', color: 'from-purple-500 to-purple-700', icon: '◆' },
-    { name: 'MongoDB', color: 'from-green-600 to-green-800', icon: 'M' },
-    { name: 'SQL', color: 'from-orange-500 to-orange-700', icon: 'DB' },
-    { name: 'Git', color: 'from-red-500 to-red-700', icon: 'G' },
+    { name: 'JavaScript', icon: 'JS' },
+    { name: 'TypeScript', icon: 'TS' },
+    { name: 'React', icon: '⚛' },
+    { name: 'Next.js', icon: '▲' },
+    { name: 'Node.js', icon: 'N' },
+    { name: 'Solidity', icon: '◆' },
+    { name: 'MongoDB', icon: 'M' },
+    { name: 'SQL', icon: 'DB' },
+    { name: 'Git', icon: 'G' },
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-purple-950 to-slate-900 text-white overflow-hidden relative">
-      <div
-        className="absolute inset-0 opacity-30 transition-opacity duration-300"
-        style={{
-          background: `radial-gradient(600px at ${mousePosition.x}px ${mousePosition.y}px, rgba(139, 92, 246, 0.15), transparent 80%)`
-        }}
-      />
-
-      <div className="absolute inset-0 opacity-40" style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='grid' width='60' height='60' patternUnits='userSpaceOnUse'%3E%3Cpath d='M 10 0 L 0 0 0 10' fill='none' stroke='rgba(255,255,255,0.03)' stroke-width='1'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23grid)'/%3E%3C/svg%3E")`
-      }} />
-
-      <div className="relative max-w-6xl mx-auto px-6 py-20">
-        <div className={`transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-          <div className="inline-block">
-            <h1 className="text-7xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-purple-600 animate-pulse">
-              Kartik
-            </h1>
-            <div className="h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full animate-pulse" />
-          </div>
-
-          <div className="mt-8 space-y-1">
-            <div className="flex items-center gap-3 text-purple-300">
-              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-              <span className="text-sm font-mono">Available for opportunities</span>
+    <div className="min-h-screen bg-black text-white">
+      <div className="fixed inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:100px_100px]" />
+      
+      <nav className="relative border-b border-gray-900">
+        <div className="max-w-5xl mx-auto px-6 py-6">
+          <div className="flex items-center justify-between">
+            <Link href="/" className="text-xl font-bold text-white hover:text-gray-400 transition-colors">
+              K.
+            </Link>
+            <div className="flex gap-8">
+              <Link href="/" className="text-gray-400 hover:text-white transition-colors">
+                Home
+              </Link>
+              <Link href="/About" className="text-white">
+                About
+              </Link>
+              <Link href="/Work" className="text-gray-400 hover:text-white transition-colors">
+                Work
+              </Link>
+              <Link href="/Contact" className="text-gray-400 hover:text-white transition-colors">
+                Contact
+              </Link>
             </div>
           </div>
         </div>
+      </nav>
 
-        <div className={`mt-16 grid md:grid-cols-2 gap-12 transform transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-          <div className="space-y-6">
-            <div className="group">
-              <h2 className="text-3xl font-bold mb-6 text-purple-300 group-hover:text-purple-200 transition-colors">
-                About Me
-              </h2>
-              <div className="space-y-4 text-gray-300 leading-relaxed">
-                <p className="hover:text-white transition-colors">
-                  I&apos;m a developer who loves turning ideas into real, working products. I don&apos;t just learn technologies, <span className="text-purple-400 font-semibold">I ship with them</span>.
+      <div className="relative max-w-5xl mx-auto px-6 py-24">
+        <div className="mb-20">
+          <div className="inline-flex items-center gap-3 mb-6">
+            <div className="w-2 h-2 bg-gray-400 rounded-full" />
+            <span className="text-sm text-gray-500 font-mono uppercase tracking-wider">Developer & Builder</span>
+          </div>
+          
+          <h1 className="text-8xl font-bold mb-6 tracking-tight">
+            <span className="bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+              Kartik
+            </span>
+          </h1>
+          
+          <div className="w-24 h-1 bg-gradient-to-r from-gray-200 to-transparent" />
+        </div>
+
+        <div className="grid lg:grid-cols-5 gap-12 mb-20">
+          <div className="lg:col-span-3 space-y-8">
+            <div>
+              <h2 className="text-2xl font-bold mb-6 text-gray-200">About</h2>
+              <div className="space-y-5 text-gray-400 text-lg leading-relaxed">
+                <p>
+                  I'm a developer who loves turning ideas into real, working products. I don't just learn technologies—<span className="text-white font-medium">I ship with them</span>.
                 </p>
-                <p className="hover:text-white transition-colors">
-                  I work primarily as a <span className="text-cyan-400 font-semibold">Full-Stack Developer</span>, building web applications with modern tools and clean architecture.
+                <p>
+                  I work primarily as a <span className="text-white font-medium">Full-Stack Developer</span>, building web applications with modern tools and clean architecture.
                 </p>
-                <p className="hover:text-white transition-colors">
-                  Recently, I&apos;ve been diving deeper into <span className="text-purple-400 font-semibold">Web3 and blockchain</span>, experimenting with smart contracts and on-chain logic.
+                <p>
+                  Recently, I've been diving deeper into <span className="text-white font-medium">Web3 and blockchain</span>, experimenting with smart contracts and on-chain logic.
                 </p>
-                <p className="hover:text-white transition-colors">
-                  What sets me apart is <span className="text-pink-400 font-semibold">consistency</span> — showing up every day, building, breaking, and fixing things.
+                <p>
+                  What sets me apart is <span className="text-white font-medium">consistency</span>—showing up every day, building, breaking, and fixing things.
                 </p>
               </div>
             </div>
 
-            <div className="mt-8 p-6 bg-gradient-to-br from-purple-900/30 to-pink-900/30 rounded-2xl border border-purple-500/20 backdrop-blur-sm hover:border-purple-500/40 transition-all">
-              <p className="text-lg text-purple-200">
-                🚀 I&apos;m actively building projects and looking for opportunities to create meaningful software.
+            <div className="border-l-2 border-gray-800 pl-6 py-4">
+              <p className="text-gray-300 text-lg">
+                Currently building projects and looking for opportunities to create meaningful software.
               </p>
             </div>
           </div>
 
-          <div>
-            <h2 className="text-3xl font-bold mb-6 text-purple-300">
-              Tech Stack
-            </h2>
-            <div className="grid grid-cols-3 gap-4">
-              {technologies.map((tech, index) => (
-                <div
-                  key={tech.name}
-                  className={`group relative transform transition-all duration-500 hover:scale-110 hover:z-10 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
-                  style={{ transitionDelay: `${600 + index * 100}ms` }}
-                >
-                  <div className={`p-6 rounded-xl bg-gradient-to-br ${tech.color} shadow-lg group-hover:shadow-2xl transition-shadow cursor-pointer`}>
-                    <div className="text-3xl font-bold mb-2 text-white/90">
-                      {tech.icon}
-                    </div>
-                    <div className="text-sm font-semibold text-white">
-                      {tech.name}
-                    </div>
-                  </div>
-
-                  <div className={`absolute inset-0 rounded-xl bg-gradient-to-br ${tech.color} opacity-0 group-hover:opacity-50 blur-xl transition-opacity -z-10`} />
+          <div className="lg:col-span-2">
+            <div className="sticky top-8">
+              <h2 className="text-2xl font-bold mb-6 text-gray-200">Status</h2>
+              <div className="space-y-4">
+                <div className="flex items-center justify-between py-3 border-b border-gray-900">
+                  <span className="text-gray-500 text-sm">Availability</span>
+                  <span className="text-gray-300 flex items-center gap-2">
+                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                    Open
+                  </span>
                 </div>
-              ))}
+                <div className="flex items-center justify-between py-3 border-b border-gray-900">
+                  <span className="text-gray-500 text-sm">Location</span>
+                  <span className="text-gray-300">Remote</span>
+                </div>
+                <div className="flex items-center justify-between py-3 border-b border-gray-900">
+                  <span className="text-gray-500 text-sm">Focus</span>
+                  <span className="text-gray-300">Full-Stack</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className={`mt-20 text-center transform transition-all duration-1000 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-          <div className="inline-flex gap-4">
-            <button className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full font-semibold hover:from-purple-500 hover:to-pink-500 transform hover:scale-105 transition-all shadow-lg hover:shadow-purple-500/50">
-              View Projects
-            </button>
-            <button className="px-8 py-4 bg-white/10 backdrop-blur-sm rounded-full font-semibold hover:bg-white/20 transform hover:scale-105 transition-all border border-white/20">
-              Get in Touch
-            </button>
+        <div className="mb-20">
+          <h2 className="text-2xl font-bold mb-8 text-gray-200">Tech Stack</h2>
+          <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-3">
+            {technologies.map((tech) => (
+              <div key={tech.name} className="group relative">
+                <div className="aspect-square bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-lg flex flex-col items-center justify-center p-4 hover:border-gray-600 transition-all duration-300 cursor-pointer">
+                  <div className="text-2xl font-bold text-gray-400 group-hover:text-white transition-colors mb-2">
+                    {tech.icon}
+                  </div>
+                  <div className="text-xs text-gray-600 group-hover:text-gray-400 transition-colors font-medium text-center">
+                    {tech.name}
+                  </div>
+                </div>
+                <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-5 rounded-lg blur-xl transition-opacity -z-10" />
+              </div>
+            ))}
           </div>
         </div>
-      </div>
 
-      <div className="absolute top-20 left-10 w-2 h-2 bg-purple-400 rounded-full animate-ping" />
-      <div className="absolute top-40 right-20 w-3 h-3 bg-pink-400 rounded-full animate-pulse" />
-      <div className="absolute bottom-40 left-1/4 w-2 h-2 bg-cyan-400 rounded-full animate-ping" style={{ animationDelay: '1s' }} />
-      <div className="absolute bottom-20 right-1/3 w-3 h-3 bg-purple-400 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="flex gap-4">
+          <Link href="/Work"> 
+            <button className="px-8 py-4 bg-white text-black font-semibold rounded-lg hover:bg-gray-200 transition-colors">
+              View Projects
+            </button>
+          </Link>
+          <Link href="/Contact">
+            <button className="px-8 py-4 bg-gray-900 text-white font-semibold rounded-lg border border-gray-800 hover:bg-gray-800 transition-colors">
+              Get in Touch
+            </button>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }
