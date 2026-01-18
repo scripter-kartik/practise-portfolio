@@ -1,127 +1,180 @@
-"use client";
-
-import Header from "@/app/components/Header/page";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import styles from "./contact.module.css";
-
-const containerVariants = {
-  hidden: { opacity: 0, scale: 0.98, y: 50 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    y: 0,
-    transition: {
-      duration: 0.9,
-      ease: [0.22, 1, 0.36, 1],
-      when: "beforeChildren",
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0 },
-};
 
 export default function Contact() {
+  const socialLinks = [
+    {
+      name: "Twitter",
+      username: "@dev_kartk",
+      href: "https://x.com/dev_kartk",
+      description: "Follow for daily updates"
+    },
+    {
+      name: "GitHub",
+      username: "github.com/kartik",
+      href: "https://github.com",
+      description: "Check out my code"
+    },
+    {
+      name: "LinkedIn",
+      username: "linkedin.com/in/kartik",
+      href: "https://linkedin.com",
+      description: "Let's connect professionally"
+    },
+    {
+      name: "Discord",
+      username: "kartik#1234",
+      href: "https://discord.com",
+      description: "Join the community"
+    }
+  ];
+
   return (
-    <motion.div
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      className="bg-white text-black flex flex-col justify-center h-screen px-50"
-    >
-      <Header
-        src="/hamburger.png"
-        href="/sections"
-        img="/right-arrow.png"
-        className="w-5 h-5"
-      />
-      <hr className="mt-10 text-gray-600" />
-      <motion.div className="flex gap-90">
-        <motion.div variants={itemVariants} className="leading-none mt-30">
-          <h1
-            className={`${styles.heading} text-[200px] font-extrabold font-serif text-gray-700`}
-          >
-            GET IN
-          </h1>
-          <div className="flex items-center">
-            <img className="mr-20" src="/eye.jpeg" alt="" />
-            <h1
-              className={`${styles.heading} text-[200px] font-extrabold font-serif text-gray-900`}
-            >
-              TOUCH
-            </h1>
+    <div className="min-h-screen bg-black text-white">
+      <div className="fixed inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:100px_100px]" />
+      
+      <nav className="relative border-b border-gray-900">
+        <div className="max-w-6xl mx-auto px-6 py-6">
+          <div className="flex items-center justify-between">
+            <Link href="/" className="text-xl font-bold text-white hover:text-gray-400 transition-colors">
+              K.
+            </Link>
+            <div className="flex gap-8">
+              <Link href="/" className="text-gray-400 hover:text-white transition-colors">
+                Home
+              </Link>
+              <Link href="/About" className="text-gray-400 hover:text-white transition-colors">
+                About
+              </Link>
+              <Link href="/Work" className="text-gray-400 hover:text-white transition-colors">
+                Work
+              </Link>
+              <Link href="/Contact" className="text-white">
+                Contact
+              </Link>
+            </div>
           </div>
-        </motion.div>
-        <motion.div variants={itemVariants} className="mt-30">
-          <p className="text-2xl text-gray-500">
-            I genuinely care about you and your wellbeing. Let me know how I can
-            serve you better.
+        </div>
+      </nav>
+
+      <div className="relative max-w-6xl mx-auto px-6 py-24">
+        <div className="mb-20">
+          <div className="inline-flex items-center gap-3 mb-6">
+            <div className="w-2 h-2 bg-gray-400 rounded-full" />
+            <span className="text-sm text-gray-500 font-mono uppercase tracking-wider">Let's Talk</span>
+          </div>
+          
+          <h1 className="text-7xl font-bold mb-8 tracking-tight">
+            <span className="bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+              Get in Touch
+            </span>
+          </h1>
+          
+          <p className="text-2xl text-gray-400 max-w-2xl leading-relaxed">
+            I'm always open to new opportunities, collaborations, and interesting conversations. Let's build something great together.
           </p>
-          <ul className="mt-20 text-2xl text-gray-600 flex flex-col justify-center gap-3">
-            <strong>Social Links</strong>
-            <Link href="https://x.com/dev_kartk">
-              <motion.li
-                className="cursor-pointer text-gray-500"
-                whileHover={{ scale: 1.1, color: "black" }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                twitter
-              </motion.li>
-            </Link>
-            <Link href="">
-              <motion.li
-                className="cursor-pointer text-gray-500"
-                whileHover={{ scale: 1.1, color: "black" }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                Github
-              </motion.li>
-            </Link>
-            <Link href="">
-              <motion.li
-                className="cursor-pointer text-gray-500"
-                whileHover={{ scale: 1.1, color: "black" }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                LinkedIn
-              </motion.li>
-            </Link>
-            <Link href="">
-              <motion.li
-                className="cursor-pointer text-gray-500"
-                whileHover={{ scale: 1.1, color: "black" }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                Discord
-              </motion.li>
-            </Link>
-          </ul>
-        </motion.div>
-      </motion.div>
-      <motion.div variants={itemVariants} className="flex items-center gap-6">
-        <p className="mt-30 text-2xl">
-          I'm always open to new opportunities and collaborations, feel free to
-          reach out:{" "}
-        </p>
-        <a
-          className="mt-30 text-2xl text-blue-700 hover:underline"
-          href="https://mail.google.com/mail/u/0/#sent?compose=new"
-        >
-          Email Me
-        </a>
-      </motion.div>
-      <motion.div variants={itemVariants}>
-        <p>
-          Email address:{" "}
-          <span className="text-blue-900 underline">
-            agarwalkartik704@gmail.com
-          </span>
-        </p>
-      </motion.div>
-    </motion.div>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-16 mb-24">
+          <div>
+            <h2 className="text-2xl font-bold mb-8 text-gray-200">Contact Information</h2>
+            
+            <div className="space-y-8">
+              <div className="group">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-1 h-8 bg-gray-700 group-hover:bg-white transition-colors" />
+                  <h3 className="text-lg font-semibold text-gray-300">Email</h3>
+                </div>
+                <a 
+                  href="mailto:agarwalkartik704@gmail.com"
+                  className="text-xl text-white hover:text-gray-400 transition-colors ml-7 inline-block"
+                >
+                  agarwalkartik704@gmail.com
+                </a>
+              </div>
+
+              <div className="group">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-1 h-8 bg-gray-700 group-hover:bg-white transition-colors" />
+                  <h3 className="text-lg font-semibold text-gray-300">Location</h3>
+                </div>
+                <p className="text-xl text-gray-400 ml-7">Remote • Available Worldwide</p>
+              </div>
+
+              <div className="group">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-1 h-8 bg-gray-700 group-hover:bg-white transition-colors" />
+                  <h3 className="text-lg font-semibold text-gray-300">Response Time</h3>
+                </div>
+                <p className="text-xl text-gray-400 ml-7">Usually within 24 hours</p>
+              </div>
+            </div>
+
+            <div className="mt-12 p-6 border border-gray-900 rounded-lg bg-gradient-to-br from-gray-950 to-black">
+              <p className="text-gray-400 leading-relaxed">
+                I genuinely care about creating meaningful solutions and building strong professional relationships. Feel free to reach out for freelance opportunities, collaborations, or just to say hi.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-bold mb-8 text-gray-200">Connect With Me</h2>
+            
+            <div className="space-y-4">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block border border-gray-900 rounded-lg p-6 hover:border-gray-700 transition-all duration-300 bg-gradient-to-br from-gray-950 to-black"
+                >
+                  <div className="flex items-start justify-between mb-2">
+                    <h3 className="text-xl font-bold text-white group-hover:text-gray-300 transition-colors">
+                      {social.name}
+                    </h3>
+                    <svg 
+                      className="w-5 h-5 text-gray-600 group-hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
+                    </svg>
+                  </div>
+                  <p className="text-sm text-gray-500 font-mono mb-2">{social.username}</p>
+                  <p className="text-sm text-gray-600">{social.description}</p>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="border-t border-gray-900 pt-16">
+          <div className="text-center max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-white to-gray-500 bg-clip-text text-transparent">
+                Have a Project in Mind?
+              </span>
+            </h2>
+            <p className="text-gray-400 text-lg mb-8 leading-relaxed">
+              Whether you need a full-stack application, smart contract development, or consulting on your next big idea—I'm here to help bring your vision to life.
+            </p>
+            <a
+              href="mailto:agarwalkartik704@gmail.com"
+              className="inline-block px-10 py-5 bg-white text-black font-semibold rounded-lg hover:bg-gray-200 transition-colors text-lg"
+            >
+              Send Me an Email
+            </a>
+          </div>
+        </div>
+
+        <div className="mt-24 text-center">
+          <div className="inline-flex items-center gap-2 text-gray-600">
+            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+            <span className="text-sm font-mono">Currently available for freelance work</span>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
