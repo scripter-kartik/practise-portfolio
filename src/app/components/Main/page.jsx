@@ -1,6 +1,7 @@
 // main jsx
 "use client";
 import Link from "next/link";
+//importing motion 
 import { motion } from "framer-motion";
 
 export default function Main() {
